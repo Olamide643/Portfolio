@@ -63,7 +63,7 @@ a:hover {
     color: #555;
 }
 
-/* Navbar Styles */
+/* General navbar styling */
 .navbar {
     background: linear-gradient(90deg, #1e3a8a, #2563eb);
     padding: 1rem;
@@ -81,14 +81,17 @@ a:hover {
     align-items: center;
 }
 
+/* Logo styling */
 .navbar-logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
+    cursor: pointer;
 }
 
+/* Link styling for large screens */
 .navbar-links {
     list-style: none;
     display: flex;
@@ -108,41 +111,7 @@ a:hover {
     color: #ffeb3b;
 }
 
-.navbar-icon {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.navbar-icon span {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px;
-    transition: 0.4s;
-}
-
-.navbar-toggle {
-    display: none;
-}
-
-.navbar-toggle:checked + .navbar-icon span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.navbar-toggle:checked + .navbar-icon span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggle:checked + .navbar-icon span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-.navbar-toggle:checked ~ .navbar-links {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Responsive design for screens less than 768px */
 @media (max-width: 768px) {
     .navbar-links {
         display: none;
@@ -155,15 +124,22 @@ a:hover {
         padding: 1rem 0;
     }
 
+    .navbar-logo {
+        position: relative;
+    }
+
+    /* Show the links when the logo is hovered */
+    .navbar-logo:hover + .navbar-links,
+    .navbar-links:hover {
+        display: flex;
+    }
+
     .navbar-links li {
         margin: 1rem 0;
         text-align: center;
     }
-
-    .navbar-icon {
-        display: flex;
-    }
 }
+
 
 
 /* Button Styles for Resume Link */
