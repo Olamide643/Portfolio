@@ -66,7 +66,7 @@ a:hover {
 /* Navbar Styles */
 .navbar {
     background: linear-gradient(90deg, #1e3a8a, #2563eb);
-    padding: 0.8rem 0; /* Smaller padding */
+    padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -74,32 +74,25 @@ a:hover {
 }
 
 .navbar .container {
-    max-width: 1200px; /* Restrict the container width */
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center align the items */
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar-logo a {
-    font-size: 1.5rem;
+.navbar-logo {
+    font-size: 1.8rem;
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
-    margin-bottom: 0.5rem; /* Add space below the logo */
 }
 
 .navbar-links {
     list-style: none;
     display: flex;
     gap: 2rem;
-    justify-content: center;
-}
-
-.navbar-links li {
-    position: relative;
 }
 
 .navbar-links li a {
@@ -111,33 +104,67 @@ a:hover {
     transition: color 0.3s ease;
 }
 
-.navbar-links li a:hover,
-.navbar-links li a:focus {
-    color: #ffeb3b; /* Gold highlight on hover */
-}
-
-.navbar-links li a::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #ffeb3b; /* Gold underline effect */
-    transition: width 0.3s ease;
-}
-
-.navbar-links li a:hover::after,
-.navbar-links li a:focus::after {
-    width: 100%;
-    margin-top: 0.2rem;
-}
-
-.navbar-links li a.active {
+.navbar-links li a:hover {
     color: #ffeb3b;
 }
 
-.navbar-links li a.active::after {
-    width: 100%;
+.navbar-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
 }
+
+.navbar-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.navbar-toggle:checked + .navbar-icon span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.navbar-toggle:checked + .navbar-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle:checked + .navbar-icon span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.navbar-toggle:checked ~ .navbar-links {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        background-color: #2563eb;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .navbar-links li {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .navbar-icon {
+        display: flex;
+    }
+}
+
 
 /* Button Styles for Resume Link */
 .navbar-links li a[href*="resume"] {
